@@ -342,6 +342,13 @@ li {
   flex-basis: 62%;
 }
 
+#about .section-text h1{
+  font-size: 20px;
+}
+
+#about .section-text li{
+  font-size: 13px;
+}
 /*--------------------------------
  SKILL
 ---------------------------------*/
