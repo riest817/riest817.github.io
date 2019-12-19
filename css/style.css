@@ -147,16 +147,16 @@ li {
 
 #header .logo-title {
   font-family: "Open sans", sans-serif;
-  font-size: 64px;
+  font-size: 50px;
   line-height: 1;
   letter-spacing: .2em;
 }
 
 #header .logo-desc {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 5px;
-  text-align: center;
-  letter-spacing: .2em;
+  text-align: left;
+
 }
 
 /*--------------------------------
@@ -432,7 +432,7 @@ li {
   align-items: flex-end;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 150px;
+  width: 550px;
   margin: 0 auto;
 }
 
@@ -660,7 +660,7 @@ li {
   }
 
   #contact .contact-list ul {
-    width: 100px;
+    width: 200px;
   }
 
   #contact .contact-list li img {
