@@ -667,7 +667,7 @@ li {
   }
 
   #contact .contact-list ul {
-    width: 300px;
+    width: 400px;
   }
 
   #contact .contact-list li img {
@@ -675,7 +675,7 @@ li {
   }
 
   #contact .contact-list-desc {
-    font-size: 12px;
+    font-size: 9px;
   }
 
   #footer .inner {
