@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://chausson0.eng.kagawa-u.ac.jp/Report/2016/InfoExpr1/K05/" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="css/common.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<title>[問題0-01] 3.BIOSの設定</title>
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <h1><a href="index.html"><img src="images/logo2.png" alt="SAMPLE WEB SITE" /></a></h1>
+        <div id="menu">
+            <ul>
+                <li class="home active"><a href="index.html">ホーム</a></li>
+                <li><a href="01index.html">【問題0-01】</a></li>
+                <li><a href="02index.html">【問題0-02】</a></li>
+                <li><a href="03index.html">【問題0-03】</a></li>
+                <li><a href="04index.html">【問題0-04】</a></li>
+                <li><a href="05index.html">【問題0-05】</a></li>
+            </ul>
+        </div><!-- /#menu -->
+    </div><!-- /#header -->
+    <div id="contents">
+        <div id="conL">
+            <h1>[問題0-01] 15点 PCのハードウェアと組立</h1>
+            <h2>3. BIOSの設定</h2>
+            <h3>BIOSの解説</h3>
+
+            <h5>BIOSの概要</h5>
+            <p>
+            	BIOSとは、Basic Input/Output System の略称であり、
+				MB上に搭載されているファームウェアである。<br>
+				ファームウェア[firmware]とは、電子機器の制御を行うための組込ソフトウェアである。<br>
+				マシンの電源を入れた直後から、HDDがない状態でも、動作している。<br>
+				MS WindowsやLinuxなどのOSを導入する前に、必要に応じて、BIOSの設定をしておく。
+			</p>
+
+			<h5>BIOSの設定ソフトウェア</h5>
+			<p>
+				BIOSの設定は、マシンの電源を入れた直後に、専用のソフトウェアを通して行う。<br>
+				主にAMI社やPhoenix社のソフトウェアが使われる。電源を入れてすぐの画面には、
+				これらの会社のロゴなどが表示される。日常で、BIOSというときは、
+				この設定ソフトウェアを指していることが多い。<br>
+			</p>
+			<p>
+				BIOSの設定は、キーボードからの操作で行う。TABやESCで、設定項目を切り替える。<br>
+				最近は、マウスで操作できることが多い。さらに、簡単なWebブラウザを起動できるものもある。<br>
+			</p>
+			<p>
+				今回使用するBIOSでは、マウスでも操作をすることができる。
+			</p>
+
+			<h5>BIOSの設定項目</h5>
+			<p>
+				自作マシンで新しいMBを使うとき、CPUやRAMの換装・増設するときは、
+				BIOSの設定が必要になる。特に、ヘビーユーザがCPUをオーバークロックで使うときなど、
+				BIOSの設定を細かく調整する。
+			</p>
+			<p>
+				また、HDDやDVDDの換装・増設に伴い、ブート順序を入れ替えるときも設定が必要である。<br>
+				特に、OSを導入するとき、一時的にCDやDVDからのブートに切り替えるため、この設定が必要となる。
+			</p>
+
+			<h3>BIOSの設定</h3>
+
+			<h5>BIOSの設定画面の起動</h5>
+			<p>
+				BIOSの設定画面を表示させるには、マシンに電源を入れた直後のメッセージに従って、
+				指定のキーを押す。このメッセージ画面は、すぐに次の画面に変わってしまうため、
+				素早い動作が必要である。
+			</p>
+			<ul>
+				<li>電源ボタンを押す。</li>
+				<li>DELキーを連打する。タイミングを逃すと、やり直しになる。</li>
+				<li>キーの打鍵が間に合えば、BIOSの設定画面が表示する。<br>
+   				失敗したときは、マシンのリブートボタンを押して、やり直す。</li>
+   			</ul>
+
+   			<h5>BIOSによるブート順序の設定</h5>
+   			<p>
+   				通常は、ブートデバイスは、HDDになっている。<br>
+				OSを導入するため、ブートデバイスをDVDDに切り替える。<br>
+				導入が終わったら、ブートデバイスをHDDに戻しておく。
+			</p>
+			<p>
+				BIOSの設定画面は、MBによって異なる。ここでは、griegとhaydnの場合を述べる。<br>
+				先述したとおり、マウスを使って設定を行うことができるものも登場している。
+			</p>
+			<ul>
+				<li>【Linux CentOS 6.5(64bit)】とプリントされたディスクをドライブに投入する。</li>
+				<li>右下の 【Boot Menu(F8)】 をクリック</li>
+				<li><code>【P4: PLDS  DVD A DH…】</code> をクリック</li>
+			</ul>
+			<p>
+				すると、DVDからブートされ、CentOSのインストールを開始することができる。
+			</p>
+
+                <h4>担当</h4>
+                <dd>14T239 佐野 裕也</dd>
+                <br>
+            
+        </div><!-- /#conL -->
+        <div id="conR">
+            <div class="submenu">
+                <h2>班員一覧</h2>
+                <ul>
+                    <p>14T207 泉 亮佑</p>
+                    <p>14T239 佐野 裕也</p>
+                    <p>14T253 服部 信哉</p>
+                    <p>14T278 山崎 勇二</p>
+                </ul>
+            </div><!-- /.submenu -->
+        </div><!-- /#conR -->
+    </div><!-- /#contents -->
+    <div id="footer">
+        <div class="copyright">Copyright &copy; 2016 InfoExpr1 K05 All Rights Reserved.</div>
+    </div><!-- /#footer -->
+</div><!-- /#container -->
+<div id="pageTop">
+    <a href="index.html">ホーム</a><br>
+    <a href="01index.html">【問題0-01】</a><br>
+    <a href="02index.html">【問題0-02】</a><br>
+    <a href="03index.html">【問題0-03】</a><br>
+    <a href="04index.html">【問題0-04】</a><br>
+    <a href="05index.html">【問題0-05】</a><br>
+    <a href="#">ページのトップへ戻る</a>
+</div><!-- /#pageTop -->
+</body>
+</html>
