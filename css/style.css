@@ -274,13 +274,13 @@ li {
 ---------------------------------*/
 
 #works .card {
-  flex-basis: 31%;
+  flex-basis: 30%;
   margin-bottom: 60px;
 }
 
 #works .card-wrapper::after {
   display: block;
-  flex-basis: 31%;
+  flex-basis: 30%;
   content: "";
 }
 
@@ -304,7 +304,7 @@ li {
 }
 
 #feature .section-image img {
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
 }
 

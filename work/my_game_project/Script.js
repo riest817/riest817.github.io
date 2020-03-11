@@ -15,9 +15,9 @@ window.onload = function () {
 	var ClickSound = "bgm/click.wav";						//game.htmlからの相対パス
 	game.preload([ClickSound]); 				//データを読み込んでおく
 
-	//ぞう山くん画像
-	var ZoyamaImg = "img/Zoyama.png";						//game.htmlからの相対パス
-	game.preload([ZoyamaImg]);					//データを読み込んでおく
+	//スライムくん画像
+	var SlimeImg = "img/slime.png";						//game.htmlからの相対パス
+	game.preload([SlimeImg]);					//データを読み込んでおく
 
 	//スタートボタン
 	var B_Start = "img/Start.png";						//game.htmlからの相対パス
@@ -41,14 +41,16 @@ window.onload = function () {
 		//グローバル変数 
 
 		var Point = 0;									//ポイント
-		var State = -1;								//現在のゲーム状態
+		var Stage = -1;								//現在のゲーム状態
+		var My_HP = 10;
+		var Enemy_HP = 5;
 
 		//グローバル変数終わり
 		/////////////////////////////////////////////////
 
 		//スタート画面
 		var S_START = new Scene();
-		S_START.backgroundColor = "red";
+		S_START.backgroundColor = "blue";
 		game.pushScene(S_START);				//S_STARTシーンを読み込ませる
 
 		//GAMESTART
@@ -68,7 +70,7 @@ window.onload = function () {
 		S_START.addChild(B_START);					//B_STARTにこのスタートボタン画像を貼り付ける  
 
 		B_START.ontouchend = function () {				//B_STARTボタンをタッチした（タッチして離した）時にこの中の内容を実行する
-			State = 0;
+			Stage = 0;
 			//game.popScene();						//S_STARシーンを外す
 			game.pushScene(S_MAIN);					//S_MAINシーンを入れる
 		};
@@ -78,40 +80,48 @@ window.onload = function () {
 		var S_MAIN = new Scene();					//シーン作成
 		S_MAIN.backgroundColor = "black"; 			//S_MAINシーンの背景は黒くした
 
-		//ポイント表示テキスト
+		//勇者ヒットポイント表示テキスト
 		var S_Text = new Label(); 					//テキストはLabelクラス
 		S_Text.font = "20px Meiryo";				//フォントはメイリオ 20px 変えたかったらググってくれ
 		S_Text.color = 'rgba(255,255,255,1)';		//色　RGB+透明度　今回は白
 		S_Text.width = 400;							//横幅指定　今回画面サイズ400pxなので、width:400pxだと折り返して二行目表示してくれる
-		S_Text.moveTo(0, 30);						//移動位置指定
+		S_Text.moveTo(0, 440);						//移動位置指定
 		S_MAIN.addChild(S_Text);					//S_MAINシーンにこの画像を埋め込む
+		S_Text.text = "勇者HP：" + My_HP;					//テキストに文字表示 Pointは変数なので、ここの数字が増える
 
-		S_Text.text = "現在：" + Point;					//テキストに文字表示 Pointは変数なので、ここの数字が増える
+		//敵ヒットポイント表示テキスト
+		var Enemy_Text = new Label(); 					//テキストはLabelクラス
+		Enemy_Text.font = "20px Meiryo";				//フォントはメイリオ 20px 変えたかったらググってくれ
+		Enemy_Text.color = 'rgba(255,255,255,1)';		//色　RGB+透明度　今回は白
+		Enemy_Text.width = 400;							//横幅指定　今回画面サイズ400pxなので、width:400pxだと折り返して二行目表示してくれる
+		Enemy_Text.moveTo(0, 30);						//移動位置指定
+		S_MAIN.addChild(Enemy_Text);					//S_MAINシーンにこの画像を埋め込む
+		Enemy_Text.text = "敵HP：" + Enemy_HP;					//テキストに文字表示 Pointは変数なので、ここの数字が増える
 
-		//ぞう山ボタン
-		var Zoyama = new Sprite(166, 168);				//画像サイズをここに書く。使う予定の画像サイズはプロパティで見ておくこと
-		Zoyama.moveTo(118, 100);						//ぞう山ボタンの位置
-		Zoyama.image = game.assets[ZoyamaImg];			//読み込む画像の相対パスを指定。　事前にgame.preloadしてないと呼び出せない
-		S_MAIN.addChild(Zoyama);					//S_MAINにこのぞう山画像を貼り付ける  
+		//スライムボタン
+		var Slime = new Sprite(166, 168);				//画像サイズをここに書く。使う予定の画像サイズはプロパティで見ておくこと
+		Slime.moveTo(118, 100);						//スライムボタンの位置
+		Slime.image = game.assets[SlimeImg];			//読み込む画像の相対パスを指定。　事前にgame.preloadしてないと呼び出せない
+		S_MAIN.addChild(Slime);					//S_MAINにこの画像を貼り付ける  
 
-		Zoyama.ontouchend = function () {				//ぞう山ボタンをタッチした（タッチして離した）時にこの中の内容を実行する
+		Slime.ontouchend = function () {				//ボタンをタッチした（タッチして離した）時にこの中の内容を実行する
 			Point++;									//Pointを1増やす
 			game.assets[ClickSound].clone().play();		//クリックの音を鳴らす。
 
-			//クリックしたのでぞう山画像のｘ位置を戻す
-			this.x = -200;							//this.xって何？と思った方、Zoyamaの関数内でぞう山の座標を動かすときにはthisを使います。
+			//クリックしたのでスライム画像のｘ位置を戻す
+			//this.x = -200;							//this.xって何？と思った方、Slimeの関数内でスライムの座標を動かすときにはthisを使います。
 
-			//ポイントによって状態Stateを変更する
+			//ポイントによって状態Stageを変更する
 			if (Point < 3) {
-				State = 1;
+				Stage = 1;
 			} else if (Point < 6) {
-				State = 2;
+				Stage = 2;
 			} else if (Point < 9) {
-				State = 3;
+				Stage = 3;
 			} else if (Point < 12) {
-				State = 4;
+				Stage = 4;
 			} else {
-				State = 5;
+				Stage = 5;
 			}
 
 		};
@@ -120,40 +130,41 @@ window.onload = function () {
 
 		///////////////////////////////////////////////////
 		//メインループ　ここに主要な処理をまとめて書こう
+		/*
 		game.onenterframe = function () {
-			if (State == 0) { 							//State=0のとき、初期セット状態(Pointの状態を０にして)
-				Zoyama.x = -200;						//ぞう山のｘ座標を指定
-				Zoyama.y = 100;						//ぞう山のy座標を指定
+			if (Stage == 0) { 							//Stage=0のとき、初期セット状態(Pointの状態を０にして)
+				Slime.x = -200;						//スライムのｘ座標を指定
+				Slime.y = 100;						//スライムのy座標を指定
 				Point = 0;  							//point初期化
-				State = 1;							//ゲームスタート状態に移行
+				Stage = 1;							//ゲームスタート状態に移行
 			}
-			if (State == 1) {							//ゲームスタート　状態１
-				Zoyama.x += 5;
+			if (Stage == 1) {							//ゲームスタート　状態１
+				Slime.x += 5;
 			}
-			if (State == 2) {							//状態２（Point３以上なら）
-				Zoyama.x += 15;
+			if (Stage == 2) {							//状態２（Point３以上なら）
+				Slime.x += 15;
 			}
-			if (State == 3) {							//状態３（Point６以上から）
-				Zoyama.x += 10;
-				Zoyama.y = 200 + Math.sin(Zoyama.x / 70) * 100; // ｙ座標を振幅100pxのサイン波で移動(Sinは便利なので慣れとくといいよ！)
+			if (Stage == 3) {							//状態３（Point６以上から）
+				Slime.x += 10;
+				Slime.y = 200 + Math.sin(Slime.x / 70) * 100; // ｙ座標を振幅100pxのサイン波で移動(Sinは便利なので慣れとくといいよ！)
 			}
-			if (State == 4) {							//状態４（Point９以上から）　4は初期セット状態（State=4）と移動状態（State=4.1)の2つに状態をわける		
-				Zoyama.y = Math.random() * 400;			//ｙ座標の位置をランダムに決定
-				State = 4.1;
+			if (Stage == 4) {							//状態４（Point９以上から）　4は初期セット状態（Stage=4）と移動状態（Stage=4.1)の2つに状態をわける		
+				Slime.y = Math.random() * 400;			//ｙ座標の位置をランダムに決定
+				Stage = 4.1;
 			}
-			if (State == 4.1) {							//状態４．１ 移動状態
-				Zoyama.x += 10;						//ただ移動します
+			if (Stage == 4.1) {							//状態４．１ 移動状態
+				Slime.x += 10;						//ただ移動します
 			}
-			if (State == 5) {							//状態５（Point１２以上から）　 ｙ軸が毎フレーム毎に変化する
-				Zoyama.x += 20;						//移動します。
-				Zoyama.y = Math.random() * 400;			//ｙ座標の位置を枚フレーム毎にランダム決定
+			if (Stage == 5) {							//状態５（Point１２以上から）　 ｙ軸が毎フレーム毎に変化する
+				Slime.x += 20;						//移動します。
+				Slime.y = Math.random() * 400;			//ｙ座標の位置を枚フレーム毎にランダム決定
 			}
 
 			//現在のテキスト表示
 			S_Text.text = "現在：" + Point; 				//Point変数が変化するので、毎フレームごとにPointの値を読み込んだ文章を表示する
 
 			//ゲームオーバー判定
-			if (Zoyama.x >= 400) {						//画面端にぞう山画像が行ってしまったら
+			if (Slime.x >= 400) {						//画面端にスライム画像が行ってしまったら
 				game.popScene();					//S_MAINシーンを外す
 				game.pushScene(S_END);				//S_ENDシーンを読み込ませる
 
@@ -161,14 +172,14 @@ window.onload = function () {
 				S_GameOverText.text = "GAMEOVER 記録：" + Point + "枚";				//テキストに文字表示 
 			}
 
-		};
+		};*/
 
 
 
 		////////////////////////////////////////////////////////////////
 		//結果画面
 		S_END = new Scene();
-		S_END.backgroundColor = "blue";
+		S_END.backgroundColor = "red";
 
 		//GAMEOVER
 		var S_GameOverText = new Label(); 					//テキストはLabelクラス
@@ -187,7 +198,7 @@ window.onload = function () {
 		S_END.addChild(S_Retry);					//S_ENDにこのリトライボタン画像を貼り付ける  
 
 		S_Retry.ontouchend = function () {				//S_Retryボタンをタッチした（タッチして離した）時にこの中の内容を実行する
-			State = 0;
+			Stage = 0;
 			game.popScene();						//S_ENDシーンを外す
 			game.pushScene(S_MAIN);					//S_MAINシーンを入れる
 		};
@@ -232,7 +243,7 @@ class Start {
 		S_START.addChild(B_START);					//B_STARTにこのスタートボタン画像を貼り付ける  
 
 		B_START.ontouchend = function () {				//B_STARTボタンをタッチした（タッチして離した）時にこの中の内容を実行する
-			State = 0;
+			Stage = 0;
 			//game.popScene();						//S_STARシーンを外す
 			game.pushScene(S_MAIN);					//S_MAINシーンを入れる
 		};
