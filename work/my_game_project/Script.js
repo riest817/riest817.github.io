@@ -8,7 +8,7 @@ window.onload = function () {
 	var game = new Game(Game_width, Game_height);  				//画面サイズを400*500にする。（このサイズだとスマホでも快適なのでおススメ）
 
 	//結果ツイート時にURLを貼るため、このゲームのURLをここに記入
-	var url = "https://twitter.com/hothukurou";
+	var url = "https://riest817.github.io/work/my_game_project/index.html";
 	url = encodeURI(url); //きちんとURLがツイート画面に反映されるようにエンコードする
 	/////////////////////////////////////////////////
 	//ゲーム開始前に必要な画像・音を読み込む部分
@@ -239,7 +239,7 @@ window.onload = function () {
 		S_Tweet.ontouchend = function () {				//S_Tweetボタンをタッチした（タッチして離した）時にこの中の内容を実行する
 			//ツイートＡＰＩに送信
 
-			window.open("http://twitter.com/intent/tweet?text=頑張って" + Stage + "ステージまで進出した&hashtags=ahoge&url=" + url); //ハッシュタグにahogeタグ付くようにした。
+			window.open("http://twitter.com/intent/tweet?text=頑張って" + Stage + "ステージまで進出した @qw000q" + url); //ハッシュタグにahogeタグ付くようにした。
 		};
 
 	};
