@@ -239,7 +239,7 @@ window.onload = function () {
 		S_Tweet.ontouchend = function () {				//S_Tweetボタンをタッチした（タッチして離した）時にこの中の内容を実行する
 			//ツイートＡＰＩに送信
 
-			window.open("http://twitter.com/intent/tweet?text=頑張って" + Stage + "ステージまで進出した @qw000q" + url); //ハッシュタグにahogeタグ付くようにした。
+			window.open("http://twitter.com/intent/tweet?text=頑張って" + Stage + "ステージまで進出した @qw000q " + url); //ハッシュタグにahogeタグ付くようにした。
 		};
 
 	};
