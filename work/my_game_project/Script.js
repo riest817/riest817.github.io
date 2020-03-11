@@ -2,7 +2,7 @@
 enchant();
 
 window.onload = function () {
-	var game = new Game(400, 500);  				//画面サイズを400*500にする。（このサイズだとスマホでも快適なのでおススメ）
+	var game = new Game(500, 800);  				//画面サイズを400*500にする。（このサイズだとスマホでも快適なのでおススメ）
 
 	//結果ツイート時にURLを貼るため、このゲームのURLをここに記入
 	var url = "https://twitter.com/hothukurou";
