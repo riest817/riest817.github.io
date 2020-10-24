@@ -88,7 +88,7 @@
                 </ui>
                 <h1>諸活動</h1>
                 <ui>
-                  <li>.2020.4~6 会社の新卒同期とシェアハウス生活</li>
+                  <li>・2020.4~6 会社の新卒同期とシェアハウス生活</li>
                   <li>・2019.8  国際学会 ICESS2019 <a href="http://sdiwc.net/conferences/fifth-icess-2019/wp-content/uploads/2019/08/ICESS2019-ICIA2019-Schedulefinal-1.pdf#search=%27ICESS2019+blockly%27">"Construction of a Learning Environment for Multiple Programming Languages using Blockly"</a> 発表<li>
                   <li>・2019.1  プラチナゲームズ(株) 1Dayインターンシップ プログラマー実践型に参加</li>
                   <li>・2019.1  放送大学 プログラミング言語概論 TA(ティーチングアシスタント) 参加</li>
@@ -320,29 +320,61 @@
       <section class="section" id="contact">
         <div class="inner">
           <div class="section-title-area">
-            <h2 class="section-title">CONTACT ＆ LINK</h2>
+            <h2 class="section-title">CONTACT</h2>
             <div class="section-intro">
-              <p>お問い合わせは、twitterのDMかGメールでお願い致します。</p>
-              <p>リンク先は以下の通りです。</p>
-            </div>
-          </div>
-          <div class="section-body contact-wrapper">
-            <div class="contact-list">
-              <ul>
-                <li><a href="https://twitter.com/qw000q" target="_blank"><img src="img/contact/icon_tw.png" alt="">twitter</a></li>
-                <li><a href="https://riest817.hatenablog.jp/" target="_blank"><img src="img/contact/icon_hatena.jpg" alt="">はてな</a></li>
-                <li><a href="https://qiita.com/riest817" target="_blank"><img src="img/contact/icon_qiita.png" alt="">Qiita</a></li>
-                <li><a href="https://www.wantedly.com/users/125785608" target="_blank"><img src="img/contact/icon_wantedly.png" alt="">Wantedly</a></li>
-                <li><a href="https://github.com/riest817" target="_blank"><img src="img/contact/icon_github.png" alt="">GitHub</a></li>
-                <li><a href="https://bitbucket.org/s14t239/" target="_blank"><img src="img/contact/icon_bitbucket.jpg" alt="">BitBucket</a></li>
-                <!--li><a href="https://www.resume.id/riest817/works" target="_blank"><img src="img/contact/icon_resume.png" alt="">うどん</a></li-->
-                <li><a href="https://www.facebook.com/yuya.sano.777" target="_blank"><img src="img/contact/icon_fb.png" alt="">Facebook</a></li>
-              </ul>
-              <div class="contact-other">✉ riest817[at]gmail.com</div>
+              <p>お問い合わせは、以下の入力フォームにてお願い致します。</p>
+              <form name="contact" method="POST" netlify>
+                <table class="form-table">
+                  <tbody>
+                    <tr>
+                      <th>氏名</th>
+                      <td><input type="text" name="name" size="60" value="" placeholder="氏名を入力してください。">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>メールアドレス</th>
+                      <td><input type="text" name="email" size="60" value="" placeholder="メールアドレスを入力してください。">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>お問い合わせ内容</th>
+                      <td><textarea name="text" cols="30" rows="10" placeholder="お問い合わせ内容を入力してください。"></textarea>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type="submit" value"送信する" class="button">
+              </form>
             </div>
           </div>
         </div>
       </section>
+
+
+      <section class="section" id="link">
+        <div class="inner">
+          <div class="section-title-area">        
+            <div class="section-body contact-wrapper">
+              <h2 class="section-title">LINK</h2>
+              <p>リンク先は以下の通りです。</p>
+              <div class="contact-list">
+                <ul>
+                  <li><a href="https://twitter.com/qw000q" target="_blank"><img src="img/contact/icon_tw.png" alt="">twitter</a></li>
+                  <li><a href="https://riest817.hatenablog.jp/" target="_blank"><img src="img/contact/icon_hatena.jpg" alt="">はてな</a></li>
+                  <li><a href="https://qiita.com/riest817" target="_blank"><img src="img/contact/icon_qiita.png" alt="">Qiita</a></li>
+                  <li><a href="https://www.wantedly.com/users/125785608" target="_blank"><img src="img/contact/icon_wantedly.png" alt="">Wantedly</a></li>
+                  <li><a href="https://github.com/riest817" target="_blank"><img src="img/contact/icon_github.png" alt="">GitHub</a></li>
+                  <li><a href="https://bitbucket.org/s14t239/" target="_blank"><img src="img/contact/icon_bitbucket.jpg" alt="">BitBucket</a></li>
+                  <!--li><a href="https://www.resume.id/riest817/works" target="_blank"><img src="img/contact/icon_resume.png" alt="">うどん</a></li-->
+                  <li><a href="https://www.facebook.com/yuya.sano.777" target="_blank"><img src="img/contact/icon_fb.png" alt="">Facebook</a></li>
+                </ul>
+                <div class="contact-other">✉ riest817[at]gmail.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
     <footer id="footer">
       <div class="pageTop">

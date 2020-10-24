@@ -23,7 +23,6 @@ time, mark, audio, video {
     border:0;
     outline:0;
     font-size:100%;
-    vertical-align:baseline;
     background:transparent;
 }
 
@@ -85,6 +84,7 @@ abbr[title], dfn[title] {
 table {
     border-collapse:collapse;
     border-spacing:0;
+    margin: 3px auto;    /* 上下3px 左右auto */
 }
 
 /* change border colour to suit your needs */
@@ -100,3 +100,23 @@ hr {
 input, select {
     vertical-align:middle;
 }
+
+.button {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 18pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 12px;   /* 余白       */
+    background    : #000000;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+    border        : 2px solid #000000;    /* 枠の指定 */
+  }
+  .button:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #000000;     /* 背景色     */
+    background    : #ffffff;     /* 文字色     */
+  }
